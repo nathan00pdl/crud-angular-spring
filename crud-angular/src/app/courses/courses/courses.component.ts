@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Course } from '../model/course';
 import { AppMaterialModule } from '../shared-app-material/app-material-module';
@@ -13,15 +13,16 @@ import { CoursesService } from '../services/courses.service';
 
 })
 
-export class CoursesComponent {
+export class CoursesComponent implements OnInit{
   courses: Course[] = [];
 
   displayedColumns = ['name', 'category'];
 
-  coursesService: CoursesService;
+  constructor(private coursesService: CoursesService) {
+    this.courses = this.coursesService.list();
+  }
 
-  constructor() {
-    this.coursesService = new CoursesService();
+  ngOnInit(): void {
     this.courses = this.coursesService.list();
   }
 }

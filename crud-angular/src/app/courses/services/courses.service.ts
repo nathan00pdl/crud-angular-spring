@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from '../model/course';
 
@@ -6,7 +7,10 @@ import { Course } from '../model/course';
 })
 export class CoursesService {
 
-  constructor() { }
+  //Dependency Injection
+  constructor(private HttpClient: HttpClient) {
+
+  }
 
   list(): Course[]{
     return [
