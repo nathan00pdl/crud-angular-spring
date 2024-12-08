@@ -5,6 +5,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { CategoryPipe } from '../pipes/category.pipe';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    CategoryPipe
   ],
   exports: [
     MatTableModule,
@@ -21,7 +25,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    MatIconModule,
+    CategoryPipe
+  ],
 })
 export class AppMaterialModule {}

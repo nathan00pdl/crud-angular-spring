@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Course } from '../model/course';
-import { AppMaterialModule } from '../shared-app-material/app-material-module';
+import { AppMaterialModule } from '../../shared/app-material/app-material-module';
 import { CoursesService } from '../services/courses.service';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
