@@ -1,6 +1,5 @@
 package com.nathan.Controller;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,7 @@ public class CourseController {
     public CourseController(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
-    
+
     @GetMapping
     public List<Course> list(){
         return courseRepository.findAll();
