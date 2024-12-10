@@ -8,7 +8,7 @@ import { delay, first, take, tap } from 'rxjs';
 })
 export class CoursesService {
 
-  private readonly API = '/crud-angular/public/courses.json'
+  private readonly API = '/api/courses';
 
   //Dependency Injection
   constructor(private httpClient: HttpClient) {
