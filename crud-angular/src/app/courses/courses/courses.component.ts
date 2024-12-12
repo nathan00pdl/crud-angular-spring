@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Course } from '../model/course';
-import { AppMaterialModule } from '../../shared/app-material/app-material-module';
-import { CoursesService } from '../services/courses.service';
-import { catchError, Observable, of } from 'rxjs';
-import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, Observable, of } from 'rxjs';
+import { AppMaterialModule } from '../../shared/app-material/app-material-module';
+import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { Course } from '../model/course';
+import { CoursesService } from '../services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -43,7 +43,7 @@ export class CoursesComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {};
 
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
