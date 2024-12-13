@@ -4,7 +4,7 @@
       <span>Detalhes do Curso</span>
     </mat-toolbar>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" class="min-width">
       <mat-form-field class="full-width">
         <input matInput placeholder="Nome" formControlName="name" />
       </mat-form-field>
@@ -15,7 +15,6 @@
           <mat-option value="null"> </mat-option>
           <mat-option value="front-end">Front-End</mat-option>
           <mat-option value="back-end">Back-End</mat-option>
-
         </mat-select>
       </mat-form-field>
     </form>
