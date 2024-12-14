@@ -7,18 +7,17 @@ import { AppMaterialModule } from '../../shared/app-material/app-material-module
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
+import { CoursesListComponent } from "../courses-list/courses-list.component";
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CommonModule, AppMaterialModule],
+  imports: [CommonModule, AppMaterialModule, CoursesListComponent],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
   courses$: Observable<Course[]>;
-
-  displayedColumns = ['name', 'category', 'actions'];
 
   constructor(
     private readonly coursesService: CoursesService,
