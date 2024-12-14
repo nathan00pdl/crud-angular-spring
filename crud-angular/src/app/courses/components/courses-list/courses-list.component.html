@@ -1,5 +1,4 @@
 <mat-table [dataSource]="courses">
-
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>Curso.</mat-header-cell>
@@ -9,18 +8,28 @@
   <!-- Category Column -->
   <ng-container matColumnDef="category">
     <mat-header-cell *matHeaderCellDef>Categoria</mat-header-cell>
-    <mat-cell *matCellDef="let course">{{ course.category }}
-      <mat-icon aria-hidden="false" aria-label="Categoria do Curso" fontIcon="{{ course.category | category }}"></mat-icon>
+    <mat-cell *matCellDef="let course"
+      >{{ course.category }}
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Categoria do Curso"
+        fontIcon="{{ course.category | category }}"
+      ></mat-icon>
     </mat-cell>
   </ng-container>
 
   <!-- Actions Column -->
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef class="action-column-header">
-      <button mat-mini-fab color="accent" aria-label="Adicionar um curso" class="action-column-header">
-          <mat-icon (click)="onAdd()">add</mat-icon>
+      <button
+        mat-mini-fab
+        color="accent"
+        aria-label="Adicionar um curso"
+        class="action-column-header"
+      >
+        <mat-icon (click)="onAdd()">add</mat-icon>
       </button>
-  </mat-header-cell>
+    </mat-header-cell>
 
     <mat-cell *matCellDef="let course" class="action-column">
       <button mat-icon-button color="primary" aria-label="Editar Curso">
@@ -31,7 +40,6 @@
         <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>
-
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

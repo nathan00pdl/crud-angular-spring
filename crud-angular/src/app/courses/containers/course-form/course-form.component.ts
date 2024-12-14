@@ -2,8 +2,8 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppMaterialModule } from '../../shared/app-material/app-material-module';
-import { CoursesService } from '../services/courses.service';
+import { AppMaterialModule } from '../../../shared/app-material/app-material-module';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-course-form',
@@ -32,7 +32,7 @@ export class CourseFormComponent implements OnInit {
   onSubimt() {
     this.service.save(this.form.value).subscribe({
       next: (result) => this.onSuccess(),
-      error: (error) => this.onError()
+      error: (error) => this.onError(),
     });
   }
 
