@@ -21,10 +21,10 @@ export class CoursesComponent implements OnInit {
   displayedColumns = ['name', 'category', 'actions'];
 
   constructor(
-    private coursesService: CoursesService,
-    public dialog: MatDialog,
-    private router: Router,
-    private route: ActivatedRoute
+    private readonly coursesService: CoursesService,
+    public readonly dialog: MatDialog,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
   ) {
     this.courses$ = this.coursesService.list().pipe(
       catchError((error) => {

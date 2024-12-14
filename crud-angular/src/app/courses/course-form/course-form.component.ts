@@ -16,24 +16,24 @@ export class CourseFormComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private service: CoursesService,
-    private snackBar: MatSnackBar,
-    private location: Location
+    private readonly formBuilder: FormBuilder,
+    private readonly service: CoursesService,
+    private readonly snackBar: MatSnackBar,
+    private readonly location: Location
   ) {
     this.form = this.formBuilder.group({
-      name: [null],
-      category: [null],
+      name: [''],
+      category: [''],
     });
   }
 
   ngOnInit(): void {}
 
   onSubimt() {
-    this.service.save(this.form.value).subscribe(
-      (result) => this.onSuccess(),
-      (error) => this.onError()
-    );
+    this.service.save(this.form.value).subscribe({
+      next: (result) => this.onSuccess(),
+      error: (error) => this.onError()
+    });
   }
 
   onCancel() {
