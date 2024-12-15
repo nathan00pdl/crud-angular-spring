@@ -9,7 +9,6 @@ import { Course } from '../model/course';
 export class CoursesService {
   private readonly API = '/api/courses';
 
-  //Dependency Injection
   constructor(private readonly httpClient: HttpClient) {}
 
   list() {
