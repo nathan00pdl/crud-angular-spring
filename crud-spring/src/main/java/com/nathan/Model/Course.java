@@ -1,5 +1,6 @@
 package com.nathan.Model;
 
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +16,8 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-@Entity  //entidade correspondente à uma tabela no BD
+@Entity  //Definição de um aentidade correspondente à tabela no BD
+@SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) //identificadores numéricos gerados automaticamente no BD
@@ -30,8 +32,13 @@ public class Course {
     
     @NotNull
     @Length(min = 10)
-    @Pattern(regexp = "Back-end | Front-end")
+    @Pattern(regexp = "Back-end|Front-end")
     @Column(length = 10, nullable = false)
     private String category;
 
+    @NotNull
+    @Length(min = 10)
+    @Pattern(regexp = "Ativo|Inativo")
+    @Column(length = 10, nullable = false)
+    private String status = "Ativo";
 }
