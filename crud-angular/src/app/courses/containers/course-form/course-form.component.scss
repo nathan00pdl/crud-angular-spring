@@ -4,7 +4,7 @@ mat-card {
   text-align: center;
 
   mat-card-actions {
-    display: flex; 
+    display: flex;
     justify-content: center;
     gap: 1em;
     margin-top: 1em;
@@ -18,4 +18,12 @@ mat-card {
 .min-width {
   width: 100%;
   min-width: 150px;
+}
+
+.btn-space {
+  margin-left: 5px;
+}
+
+.actions-center {
+  justify-content: center;
 }
