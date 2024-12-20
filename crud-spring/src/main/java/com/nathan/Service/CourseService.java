@@ -12,6 +12,7 @@ import com.nathan.Exception.RecordNotFoundException;
 import com.nathan.Repository.CourseRepository;
 import com.nathan.dto.CourseDTO;
 import com.nathan.dto.mapper.CourseMapper;
+import com.nathan.enums.Category;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -31,7 +32,7 @@ public class CourseService {
     public List<CourseDTO> list() {
         return courseRepository.findAll()
                 .stream()
-                .map(courseMapper::toDTO) // alternativa de sintaxe: course -> courseMapper.toDTO(course)
+                .map(courseMapper::toDTO) // sintaxe utilizando expressão lambda: course -> courseMapper.toDTO(course)
                 .collect(Collectors.toList());
     }
 
@@ -49,7 +50,7 @@ public class CourseService {
         return courseRepository.findById(id)
                 .map(recordFound -> {
                     recordFound.setName(course.name());
-                    recordFound.setCategory(course.category());
+                    recordFound.setCategory(Category.FRONT_END);
                     return courseRepository.save(recordFound);
                 })
                 .map(courseMapper::toDTO)

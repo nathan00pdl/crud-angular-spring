@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.nathan.Model.Course;
 import com.nathan.dto.CourseDTO;
+import com.nathan.enums.Category;
 
 //Temos uma lista de cursos e queremos retornar DTOs -> toDTO() é o método responsável por isso.
 
@@ -15,7 +16,7 @@ public class CourseMapper {
             return null;
         }
 
-        return new CourseDTO(course.getId(), course.getName(), course.getCategory());
+        return new CourseDTO(course.getId(), course.getName(), "Front-end");
     }
 
     public Course toEntity(CourseDTO courseDTO) {
@@ -29,7 +30,7 @@ public class CourseMapper {
         }
         
         course.setName(courseDTO.name());
-        course.setCategory(courseDTO.category());
+        course.setCategory(Category.FRONT_END);
 
         return course;
     }
