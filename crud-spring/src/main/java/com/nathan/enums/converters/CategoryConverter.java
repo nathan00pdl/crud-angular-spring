@@ -16,7 +16,7 @@ import jakarta.persistence.Converter;
 
  //Este conversor será automaticamente aplicado para todas as entidades que utilizam o tipo Category
 @Converter(autoApply = true) 
-public class CategoryConvertor implements AttributeConverter<Category, String> {
+public class CategoryConverter implements AttributeConverter<Category, String> {
 
     @Override
     public String convertToDatabaseColumn(Category category) {
@@ -37,4 +37,6 @@ public class CategoryConvertor implements AttributeConverter<Category, String> {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
+    //Category.values() retorna um array de todos os valores do ENUM:  
+    //[Category.BACK_END, Category.FRONT_END]
 }
