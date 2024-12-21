@@ -1,9 +1,13 @@
 package com.nathan.dto.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.nathan.Model.Course;
 import com.nathan.dto.CourseDTO;
+import com.nathan.dto.LessonDTO;
 import com.nathan.enums.Category;
 
 //Temos uma lista de cursos e queremos retornar DTOs -> toDTO() é o método responsável por isso.
@@ -16,10 +20,15 @@ public class CourseMapper {
             return null;
         }
 
+        List<LessonDTO> lessons = course.getLessons()
+                .stream()
+                .map(lesson -> new LessonDTO(lesson.getId(), lesson.getName(), lesson.getYoutubeUrl()))
+                .collect(Collectors.toList());
+
         return new CourseDTO(course.getId(),
                 course.getName(),
                 course.getCategory().getValue(),
-                course.getLessons());
+                lessons);
     }
 
     public Course toEntity(CourseDTO courseDTO) {
