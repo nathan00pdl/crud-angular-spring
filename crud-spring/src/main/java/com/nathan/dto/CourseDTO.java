@@ -1,8 +1,11 @@
 package com.nathan.dto;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.nathan.Model.Lesson;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -20,5 +23,7 @@ public record CourseDTO(
     @NotNull
     @Length(max = 10) 
     @Pattern(regexp = "Back-end|Front-end")
-    String category) {
+    String category,
+    
+    List<Lesson> lessons) {
 }
