@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.nathan.Model.Course;
+import com.nathan.Model.Lesson;
 import com.nathan.Repository.CourseRepository;
+import com.nathan.enums.Category;
 
 @SpringBootApplication
 public class CrudSpringApplication {
@@ -23,7 +25,14 @@ public class CrudSpringApplication {
 			Course c = new Course();
 			
 			c.setName("Angular com Spring");
-			c.setCategory(com.nathan.enums.Category.FRONT_END);
+			c.setCategory(Category.BACK_END);
+
+			Lesson l = new Lesson();
+			l.setName("Introdução");
+			l.setYoutubeUrl("teste");
+			l.setCourse(c);
+
+			c.getLessons().add(l);
 
 			courseRepository.save(c);
 		};
