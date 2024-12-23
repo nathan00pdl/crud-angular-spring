@@ -1,12 +1,17 @@
-import { Lesson } from './../../model/lesson';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, UntypedFormArray, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  UntypedFormArray,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { AppMaterialModule } from '../../../shared/app-material/app-material-module';
 import { Course } from '../../model/course';
 import { CoursesService } from '../../services/courses.service';
+import { Lesson } from './../../model/lesson';
 
 @Component({
   selector: 'app-course-form',
@@ -39,7 +44,7 @@ export class CourseFormComponent implements OnInit {
         ],
       ],
       category: [course.category, [Validators.required]],
-      lessons: this.formBuilder.array(this.retrieveLessons(course))
+      lessons: this.formBuilder.array(this.retrieveLessons(course)),
     });
   }
 
@@ -65,6 +70,16 @@ export class CourseFormComponent implements OnInit {
 
   getLessonsFormArray() {
     return (<UntypedFormArray>this.form.get('lessons')).controls;
+  }
+
+  addNewLesson() {
+    const lessons = this.form.get('lessons') as UntypedFormArray;
+    lessons.push(this.createLesson());
+  }
+
+  removeLesson(index: number) {
+    const lessons = this.form.get('lessons') as UntypedFormArray;
+    lessons.removeAt(index);
   }
 
   onSubimt() {
