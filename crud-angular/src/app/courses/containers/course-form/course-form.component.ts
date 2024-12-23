@@ -1,7 +1,7 @@
 import { Lesson } from './../../model/lesson';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, UntypedFormArray, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { AppMaterialModule } from '../../../shared/app-material/app-material-module';
@@ -61,6 +61,10 @@ export class CourseFormComponent implements OnInit {
       name: [lesson.name],
       youtubeUrl: [lesson.youtubeUrl],
     });
+  }
+
+  getLessonsFormArray() {
+    return (<UntypedFormArray>this.form.get('lessons')).controls;
   }
 
   onSubimt() {
