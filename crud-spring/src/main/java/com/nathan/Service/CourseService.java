@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.nathan.Exception.RecordNotFoundException;
+import com.nathan.Model.Course;
 import com.nathan.Repository.CourseRepository;
 import com.nathan.dto.CourseDTO;
 import com.nathan.dto.mapper.CourseMapper;
@@ -44,11 +45,15 @@ public class CourseService {
         return courseMapper.toDTO(courseRepository.save(courseMapper.toEntity(course)));
     }
 
-    public CourseDTO update(@NotNull @Positive Long id, @RequestBody @Valid @NotNull CourseDTO course) {
+    public CourseDTO update(@NotNull @Positive Long id, @RequestBody @Valid @NotNull CourseDTO courseDTO) {
         return courseRepository.findById(id)
                 .map(recordFound -> {
-                    recordFound.setName(course.name());
-                    recordFound.setCategory(this.courseMapper.convertCategoryValue(course.category()));
+                    Course course = courseMapper.toEntity(courseDTO);
+                    recordFound.setName(courseDTO.name());
+                    recordFound.setCategory(this.courseMapper.convertCategoryValue(courseDTO.category()));
+                    recordFound.getLessons().clear();
+                    course.getLessons().forEach(lesson -> recordFound.getLessons().add(lesson));
+
                     return courseRepository.save(recordFound);
                 })
                 .map(courseMapper::toDTO)

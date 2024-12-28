@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.nathan.Model.Course;
+import com.nathan.Model.Lesson;
 import com.nathan.dto.CourseDTO;
 import com.nathan.dto.LessonDTO;
 import com.nathan.enums.Category;
@@ -43,6 +44,16 @@ public class CourseMapper {
 
         course.setName(courseDTO.name());
         course.setCategory(convertCategoryValue(courseDTO.category()));
+
+        List<Lesson> lessons = courseDTO.lessons().stream().map(lessonsDTO -> {
+            var lesson = new Lesson();
+            lesson.setId(lessonsDTO.id());
+            lesson.setName(lessonsDTO.name());
+            lesson.setYoutubeUrl(lessonsDTO.youtubeUtl());
+            lesson.setCourse(course);
+            return lesson;
+        }).collect(Collectors.toList());
+        course.setLessons(lessons);
 
         return course;
     }
