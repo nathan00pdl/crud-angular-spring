@@ -1,7 +1,6 @@
 package com.nathan.Controller;
 
-import java.util.List;
-
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,16 +10,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nathan.Service.CourseService;
 import com.nathan.dto.CourseDTO;
+import com.nathan.dto.CoursePageDTO;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Validated
 @RestController
@@ -31,12 +34,13 @@ public class CourseController {
 
     // DI (Dependency Injection) via construtor
     public CourseController(CourseService courseService) {
-        this.courseService = courseService; 
+        this.courseService = courseService;
     }
 
     @GetMapping
-    public List<CourseDTO> list() {
-        return courseService.list();
+    public CoursePageDTO list(@RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "10") @Positive @Max(100) int pageSize) {
+        return courseService.list(pageNumber, pageSize);
     }
 
     @GetMapping("/{id}")

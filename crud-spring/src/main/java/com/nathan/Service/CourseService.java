@@ -3,6 +3,8 @@ package com.nathan.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.hibernate.query.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,11 +13,14 @@ import com.nathan.Exception.RecordNotFoundException;
 import com.nathan.Model.Course;
 import com.nathan.Repository.CourseRepository;
 import com.nathan.dto.CourseDTO;
+import com.nathan.dto.CoursePageDTO;
 import com.nathan.dto.mapper.CourseMapper;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Validated
 @Service
@@ -28,11 +33,11 @@ public class CourseService {
         this.courseMapper = courseMapper;
     }
 
-    public List<CourseDTO> list() {
-        return courseRepository.findAll()
-                .stream()
-                .map(courseMapper::toDTO) // sintaxe utilizando expressão lambda: course -> courseMapper.toDTO(course)
-                .collect(Collectors.toList());
+    public CoursePageDTO list(@PositiveOrZero int pageNumber, @Positive @Max(100) int pageSize) {
+        Page<Course> pageCourse = courseRepository.findAll(PageRequest.of(pageNumber, pageSize));
+        List<CourseDTO> courses = pageCourse.get().map(courseMapper::toDTO).collect(Collectors.toList());
+
+        return new CoursePageDTO(courses, pageCourse.getTotalElements(), pageCourse.getTotalPages());
     }
 
     public CourseDTO findById(@NotNull @Positive Long id) {
