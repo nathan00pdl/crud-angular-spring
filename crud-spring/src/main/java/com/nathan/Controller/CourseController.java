@@ -1,6 +1,5 @@
 package com.nathan.Controller;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,7 +37,7 @@ public class CourseController {
     }
 
     @GetMapping
-    public CoursePageDTO list(@RequestParam(defaultValue = "0") int pageNumber,
+    public CoursePageDTO list(@RequestParam(defaultValue = "0") @PositiveOrZero int pageNumber,
             @RequestParam(defaultValue = "10") @Positive @Max(100) int pageSize) {
         return courseService.list(pageNumber, pageSize);
     }
