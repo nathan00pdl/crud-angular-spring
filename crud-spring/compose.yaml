@@ -14,4 +14,4 @@ services:
     restart: always
 
 volumes:
-  mysql_data:
+  mysql_data: {}
