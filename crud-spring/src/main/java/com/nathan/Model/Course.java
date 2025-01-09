@@ -25,11 +25,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-@Entity  //Course será uma entidade correspondente à uma tabela no BD
+@Entity // Course será uma entidade correspondente à uma tabela no BD (tabela com mesmo
+        // nome da classe)
 @SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?")
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) //identificadores numéricos gerados automaticamente no BD
+    @GeneratedValue(strategy = GenerationType.AUTO) // identificadores numéricos gerados automaticamente no BD
     @JsonProperty("_id")
     private Long id;
 
@@ -38,7 +39,7 @@ public class Course {
     @Length(min = 5, max = 100)
     @Column(length = 100, nullable = false)
     private String name;
-    
+
     @NotNull
     @Column(length = 10, nullable = false)
     @Convert(converter = CategoryConverter.class)
@@ -95,5 +96,19 @@ public class Course {
         this.lessons = lessons;
     }
 
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Lesson lesson = (Lesson) obj;
+        return id != null && id.equals(lesson.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
 }
