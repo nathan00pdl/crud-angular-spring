@@ -25,9 +25,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-@Entity // Course será uma entidade correspondente à uma tabela no BD (tabela com mesmo
-        // nome da classe)
-@SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?")
+@Entity // Course será uma entidade correspondente à uma tabela no BD (tabela com mesmo nome da classe)
+@SQLDelete(sql = "UPDATE Course SET status = 'Inactive' WHERE id = ?")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // identificadores numéricos gerados automaticamente no BD
