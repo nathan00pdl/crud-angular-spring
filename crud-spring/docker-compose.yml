@@ -1,7 +1,7 @@
 services:
   mysql:
-    image: 'mysql:latest'
-    container_name: mysql
+    image: 'mysql:8.0'
+    container_name: crud_spring_mysql
     environment:
       MYSQL_DATABASE: courses
       MYSQL_PASSWORD: secret
@@ -10,8 +10,8 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql_data_vol:/var/lib/mysql
     restart: always
 
 volumes:
-  mysql_data: {}
+  mysql_data_vol: {}
