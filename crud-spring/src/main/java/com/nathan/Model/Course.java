@@ -20,13 +20,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-@Entity // Course será uma entidade correspondente à uma tabela no BD (tabela com mesmo nome da classe)
-@SQLDelete(sql = "UPDATE Course SET status = 'Inactive' WHERE id = ?")
+@Entity
+@Table(name = "course")
+@SQLDelete(sql = "UPDATE course SET status = 'INACTIVE' WHERE id = ?")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // identificadores numéricos gerados automaticamente no BD
@@ -93,21 +95,6 @@ public class Course {
 
     public void setLessons(List<Lesson> lessons) {
         this.lessons = lessons;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        Lesson lesson = (Lesson) obj;
-        return id != null && id.equals(lesson.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 
 }

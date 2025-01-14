@@ -13,16 +13,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@SQLDelete(sql = "UPDATE Lesson SET status = 'Inativo' WHERE id = ?")
+@Table(name = "lesson")
 public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
 
     @NotNull
     @NotBlank
@@ -39,7 +40,7 @@ public class Lesson {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "course_id", nullable = false)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // Solução para remover referencia ciclica no relacionamento bidirecional Course <> Lesson
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //Solução para remover referencia ciclica no relacionamento bidirecional Course <> Lesson
     private Course course;
 
     public Long getId() {
@@ -72,21 +73,6 @@ public class Lesson {
 
     public void setCourse(Course course) {
         this.course = course;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        Lesson lesson = (Lesson) obj;
-        return id != null && id.equals(lesson.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 
     @Override
