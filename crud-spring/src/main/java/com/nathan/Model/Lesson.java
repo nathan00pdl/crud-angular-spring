@@ -1,6 +1,5 @@
 package com.nathan.Model;
 
-import org.hibernate.annotations.SQLDelete;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -25,6 +25,6 @@ public class StatusConverter implements AttributeConverter<Status, String>{
         return Stream.of(Status.values())
                 .filter(c -> c.getValue().equals(value))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException("Status não encontrado para para o valor: " + value));
     }    
 }

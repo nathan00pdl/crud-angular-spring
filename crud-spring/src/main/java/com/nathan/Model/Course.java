@@ -26,9 +26,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-@Entity
+@Entity 
 @Table(name = "course")
-@SQLDelete(sql = "UPDATE course SET status = 'INACTIVE' WHERE id = ?")
+@SQLDelete(sql = "UPDATE course SET status = 'Inativo' WHERE id = ?")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // identificadores numéricos gerados automaticamente no BD
