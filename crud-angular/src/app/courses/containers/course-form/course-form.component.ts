@@ -1,4 +1,4 @@
-import { CommonModule, Location } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -17,7 +17,7 @@ import { Lesson } from './../../model/lesson';
 @Component({
   selector: 'app-course-form',
   standalone: true,
-  imports: [AppMaterialModule, CommonModule],
+  imports: [AppMaterialModule],
   templateUrl: './course-form.component.html',
   styleUrls: ['./course-form.component.scss'],
 })

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AppMaterialModule } from '../../../shared/app-material/app-material-module';
 import { Course } from '../../model/course';
@@ -6,7 +6,7 @@ import { Course } from '../../model/course';
 @Component({
   selector: 'app-courses-list',
   standalone: true,
-  imports: [CommonModule, AppMaterialModule],
+  imports: [AppMaterialModule],
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss'],
 })
