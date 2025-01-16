@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { AppMaterialModule } from '../../../shared/app-material/app-material-module';
 import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
-import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 import { CoursesListComponent } from '../../components/courses-list/courses-list.component';
 import { Course } from '../../model/course';
 import { CoursePage } from '../../model/course-page';
