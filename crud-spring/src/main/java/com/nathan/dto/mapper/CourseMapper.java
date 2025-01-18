@@ -11,9 +11,17 @@ import com.nathan.dto.CourseDTO;
 import com.nathan.dto.LessonDTO;
 import com.nathan.enums.Category;
 
-//Temos uma lista de cursos e queremos retornar DTOs -> toDTO() é o método responsável por isso.
+/*
+ * Uso de um Mapper
+ * Responsável por mapear as entidades com os respectivos DTOs
+ * Mantém o desacoplamento entre as camadas da aplicação 
+ * Garante que apenas dados relevantes sejam enviados para o front-end ou recebidos da aplicação cliente
+ * Padrão Separation of Concerns
+ * 
+ * toDTO() -> Converte uma entidade persistida no banco de dados em um objeto DTO ao qual será utilizado no front-end
+ * toEntity() -> Converte um objeto DTO em uma entidade para que possa ser validado e armazenados no banco de dados 
+ */
 
-//Classe responsável pelo mapeamento de DTOs - Entidades.
 @Component
 public class CourseMapper {
     public CourseDTO toDTO(Course course) {
@@ -26,10 +34,7 @@ public class CourseMapper {
                 .map(lesson -> new LessonDTO(lesson.getId(), lesson.getName(), lesson.getYoutubeUrl()))
                 .collect(Collectors.toList());
 
-        return new CourseDTO(course.getId(),
-                course.getName(),
-                course.getCategory().getValue(),
-                lessons);
+        return new CourseDTO(course.getId(), course.getName(), course.getCategory().getValue(), lessons);
     }
 
     public Course toEntity(CourseDTO courseDTO) {
@@ -58,7 +63,7 @@ public class CourseMapper {
         return course;
     }
 
-    public Category convertCategoryValue(String value) {
+    public Category convertCategoryValue(String value) {  
         if (value == null) {
             return null;
         }

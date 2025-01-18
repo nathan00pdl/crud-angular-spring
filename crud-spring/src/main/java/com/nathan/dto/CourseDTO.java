@@ -13,12 +13,21 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+/*
+ * Uso de Record
+ * É um tipo especial de classe que gerencia de forma automática os getters, equals(), hashCode() e toString()
+ * Foram projetados exatamente para representar objetos imutáveis e simples como os DTOs
+ * Redução significativa de linhas de código, tornando o código mais claro e limpo 
+ * Obs.: Cada campo do record é transformado automaticamente em um atributo private final
+ * Atenção: Nomenclatura dos métodos gerados automaticamente: id(), name(), category() e lessons(). São todos métodos get!  
+ */
+
 public record CourseDTO(
-                @JsonProperty("_id") Long id,
+        @JsonProperty("_id") Long id,
 
-                @NotBlank @NotNull @Length(min = 5, max = 100) String name,
+        @NotBlank @NotNull @Length(min = 5, max = 100) String name,
 
-                @NotNull @Length(max = 10) @ValueOfEnum(enumClass = Category.class) String category,
+        @NotNull @Length(max = 10) @ValueOfEnum(enumClass = Category.class) String category,
 
-                @NotNull @NotEmpty @Valid List<LessonDTO> lessons) {
+        @NotNull @NotEmpty @Valid List<LessonDTO> lessons) {
 }
