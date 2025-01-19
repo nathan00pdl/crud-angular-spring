@@ -15,16 +15,19 @@ import com.nathan.Repository.CourseRepository;
 import com.nathan.dto.CourseDTO;
 import com.nathan.dto.CoursePageDTO;
 import com.nathan.dto.mapper.CourseMapper;
+import com.nathan.enums.Status;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
 /*
- * Obs: Uso de assinatura de métodos fornecidos pela interface JpaRepository é possível
- * devido ao paradigma de Progrmação Orientada a Aspectos
+ * Obs: Uso de assinaturas de métodos fornecidos pela interface JpaRepository (sem a declaração explícita em CourseRepository)
+ * é possível devido ao paradigma de Progrmação Orientada a Aspectos
+ * Ex: findAll() e findById() são métodos gerados auto automaticamente em tempo de execução pelo Spring Data JPA
  */
 
 @Validated
@@ -37,8 +40,7 @@ public class CourseService {
         this.courseRepository = courseRepository;
         this.courseMapper = courseMapper;
     }
-
-    //método implementado automaticamente pelo Spring Data JPA
+    
     public CoursePageDTO findAll(@PositiveOrZero int pageNumber, @Positive @Max(100) int pageSize) {
         Page<Course> pageCourse = courseRepository.findAll(PageRequest.of(pageNumber, pageSize));
         List<CourseDTO> list = pageCourse.getContent().stream().map(courseMapper::toDTO).toList();
@@ -46,11 +48,21 @@ public class CourseService {
         return new CoursePageDTO(list, pageCourse.getTotalElements(), pageCourse.getTotalPages());
     }
 
-    //método implementado automaticamente pelo Spring Data JPA
     public CourseDTO findById(@NotNull @Positive Long id) {  //retorno: objeto do tipo Optional<Course>
         return courseRepository.findById(id)
                 .map(courseMapper::toDTO)
                 .orElseThrow(() -> new RecordNotFoundException(id));  //se o Optional estiver vazio, uma exceção personalizada é lançada
+    }
+
+    public List<CourseDTO> findByName(@NotNull @NotBlank String name) {
+        return courseRepository.findByName(name).stream().map(courseMapper::toDTO).toList();
+    }
+
+    public CoursePageDTO findByStatus(Status status, @PositiveOrZero int pageNumber, @Positive @Max(100) int pageSize) {
+        Page<Course> pageCourse = courseRepository.findByStatus(status, PageRequest.of(pageNumber, pageSize));
+        List<CourseDTO> list = pageCourse.getContent().stream().map(courseMapper::toDTO).toList();
+
+        return new CoursePageDTO(list, pageCourse.getTotalElements(), pageCourse.getTotalPages());
     }
 
     public CourseDTO create(@Valid @NotNull CourseDTO course) {
