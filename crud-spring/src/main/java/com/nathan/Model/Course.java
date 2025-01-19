@@ -31,7 +31,7 @@ import jakarta.validation.constraints.NotNull;
 @SQLDelete(sql = "UPDATE course SET status = 'Inativo' WHERE id = ?")
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // identificadores numéricos gerados automaticamente no BD
+    @GeneratedValue(strategy = GenerationType.AUTO) 
     @JsonProperty("_id")
     private Long id;
 
