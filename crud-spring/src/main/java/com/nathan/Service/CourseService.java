@@ -22,6 +22,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
+/*
+ * Obs: Uso de assinatura de métodos fornecidos pela interface JpaRepository é possível
+ * devido ao paradigma de Progrmação Orientada a Aspectos
+ */
+
 @Validated
 @Service
 public class CourseService {
@@ -33,17 +38,19 @@ public class CourseService {
         this.courseMapper = courseMapper;
     }
 
-    public CoursePageDTO list(@PositiveOrZero int pageNumber, @Positive @Max(100) int pageSize) {
+    //método implementado automaticamente pelo Spring Data JPA
+    public CoursePageDTO findAll(@PositiveOrZero int pageNumber, @Positive @Max(100) int pageSize) {
         Page<Course> pageCourse = courseRepository.findAll(PageRequest.of(pageNumber, pageSize));
-        List<CourseDTO> courses = pageCourse.get().map(courseMapper::toDTO).collect(Collectors.toList());
+        List<CourseDTO> list = pageCourse.getContent().stream().map(courseMapper::toDTO).toList();
 
-        return new CoursePageDTO(courses, pageCourse.getTotalElements(), pageCourse.getTotalPages());
+        return new CoursePageDTO(list, pageCourse.getTotalElements(), pageCourse.getTotalPages());
     }
 
-    public CourseDTO findById(@NotNull @Positive Long id) {
+    //método implementado automaticamente pelo Spring Data JPA
+    public CourseDTO findById(@NotNull @Positive Long id) {  //retorno: objeto do tipo Optional<Course>
         return courseRepository.findById(id)
                 .map(courseMapper::toDTO)
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(id));  //se o Optional estiver vazio, uma exceção personalizada é lançada
     }
 
     public CourseDTO create(@Valid @NotNull CourseDTO course) {
