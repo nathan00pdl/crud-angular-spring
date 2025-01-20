@@ -12,14 +12,12 @@ import com.nathan.dto.LessonDTO;
 import com.nathan.enums.Category;
 
 /*
- * Uso de um Mapper
- * Responsável por mapear as entidades com os respectivos DTOs
- * Mantém o desacoplamento entre as camadas da aplicação 
- * Garante que apenas dados relevantes sejam enviados para o front-end ou recebidos da aplicação cliente
- * Padrão Separation of Concerns
+ * Using a Mapper
  * 
- * toDTO() -> Converte uma entidade persistida no banco de dados em um objeto DTO ao qual será utilizado no front-end
- * toEntity() -> Converte um objeto DTO em uma entidade para que possa ser validado e armazenados no banco de dados 
+ * Responsible for mapping entities with their respective DTOs
+ * Maintains decoupling between application layers
+ * Ensures tha only relevant data is sent to the fron-end or recieved from the client application
+ * Standard: Separation of Concerns
  */
 
 @Component

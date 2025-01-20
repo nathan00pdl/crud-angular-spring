@@ -11,8 +11,8 @@ import com.nathan.Model.Course;
 import com.nathan.enums.Status;
 
 /*
- * Obs: Esses métodos são declarados explicitamente, pois são definidos parâmetros e tipos de retornos personalizados em relação 
- * à disponibilidade das mesmas assinaturas por parte da interface JpaRepository
+ * These methods are explicity declared as they are defined with custom parameters and return types compared to  
+ * the same signatures provided by the JpaRepository interface
  */
 
 @Repository

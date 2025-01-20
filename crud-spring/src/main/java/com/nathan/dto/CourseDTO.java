@@ -14,12 +14,12 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 /*
- * Uso de Record
- * É um tipo especial de classe que gerencia de forma automática os getters, equals(), hashCode() e toString()
- * Foram projetados exatamente para representar objetos imutáveis e simples como os DTOs
- * Redução significativa de linhas de código, tornando o código mais claro e limpo 
- * Obs.: Cada campo do record é transformado automaticamente em um atributo private final
- * Atenção: Nomenclatura dos métodos gerados automaticamente: id(), name(), category() e lessons(). São todos métodos get!  
+ * Record type
+ * 
+ * It is as special type of class that automaticaly manages the getters, equals(), hashCode() e toString()
+ * They are designed precisely to represent immutable and simple objects like DTOs
+ * Significant redution of lines of code  making the code clearer and cleaner
+ * Each field in the record is automaticaly transformed into a private final attribute
  */
 
 public record CourseDTO(

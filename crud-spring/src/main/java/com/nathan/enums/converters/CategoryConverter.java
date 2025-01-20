@@ -8,13 +8,13 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 /*
- *AtributeConverter é uma interface do JPA responsável por:  
- *1)Salvar o ENUM no BD como uma string  
- *2)Recuperar tal string e converter para o ENUM correspondente 
- *obs: por padrão o JPA salva os ENUM como inteiros e isso pode causar problemas
+ * AtributeConverter interface:  
+ * 1) Save ENUM to database as a string 
+ * 2) Retrieve such string and convert to corresponding ENUM 
+ * 
+ * By default JPA saves ENUMs as int type values and this can cause problems
  */
 
- //Este conversor será automaticamente aplicado para todas as entidades que utilizam o tipo Category
 @Converter(autoApply = true) 
 public class CategoryConverter implements AttributeConverter<Category, String> {
 
@@ -37,6 +37,5 @@ public class CategoryConverter implements AttributeConverter<Category, String> {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    //Category.values() retorna um array de todos os valores do ENUM:  
-    //[Category.BACK_END, Category.FRONT_END]
+    // Category.values() returns an array with the ENUM values: [Category.BACK_END, Category.FRONT_END]
 }

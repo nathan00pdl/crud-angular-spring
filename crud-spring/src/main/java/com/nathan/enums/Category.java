@@ -1,6 +1,6 @@
 package com.nathan.enums;
 
-//ENUM -> Definição de valores fixos fortemente tipados
+// ENUM -> Defining strongly typed fixed values
 
 public enum Category {
     BACK_END("Back-end"), 

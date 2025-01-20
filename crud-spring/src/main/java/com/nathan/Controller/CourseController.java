@@ -34,8 +34,7 @@ public class CourseController {
 
     private final CourseService courseService;
 
-    // Injeção de dependência via construtor (garante desacoplamento com a camada de
-    // serviço - princípio OCP do SOLID)
+    // Dependency Injection via constructor ensuring decoupling with the service layer - OCP principle (SOLID)
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }

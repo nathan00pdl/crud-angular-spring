@@ -39,7 +39,7 @@ public class Lesson {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "course_id", nullable = false)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //Solução para remover referencia cíclica no relacionamento bidirecional Course <> Lesson
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // Solution to remove cyclic reference in bidirectional relationship Course-Lesson
     private Course course;
 
     public Long getId() {

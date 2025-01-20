@@ -24,9 +24,10 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
 /*
- * Obs: Uso de assinaturas de métodos fornecidos pela interface JpaRepository (sem a declaração explícita em CourseRepository)
- * é possível devido ao paradigma de Progrmação Orientada a Aspectos
- * Ex: findAll() e findById() são métodos gerados auto automaticamente em tempo de execução pelo Spring Data JPA
+ * Using method signatures privided by the JpaRepository interface (without explicit declaration in CourseRepository)
+ * is possible due to the Aspect Oriented Programming paradigm
+ * 
+ * findAll() e findById() are methods automatically generated at runtime by Spring Data JPA
  */
 
 @Validated
@@ -47,10 +48,10 @@ public class CourseService {
         return new CoursePageDTO(list, pageCourse.getTotalElements(), pageCourse.getTotalPages());
     }
 
-    public CourseDTO findById(@NotNull @Positive Long id) {  //retorno: objeto do tipo Optional<Course>
+    public CourseDTO findById(@NotNull @Positive Long id) {  // Return: object of type Optional<Course>
         return courseRepository.findById(id)
                 .map(courseMapper::toDTO)
-                .orElseThrow(() -> new RecordNotFoundException(id));  //se o Optional estiver vazio, uma exceção personalizada é lançada
+                .orElseThrow(() -> new RecordNotFoundException(id));  // If Optional is empty, a custom exception is thrown
     }
 
     public List<CourseDTO> findByName(@NotNull @NotBlank String name) {
