@@ -32,7 +32,7 @@ public class Lesson {
 
     @NotNull
     @NotBlank
-    @Length(min = 10, max = 11)
+    @Length(min = 10, max = 30)
     @Column(length = 11, nullable = false)
     private String youtubeUrl;
 

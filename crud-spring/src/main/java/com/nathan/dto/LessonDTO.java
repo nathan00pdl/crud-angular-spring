@@ -11,6 +11,6 @@ public record LessonDTO(
 
         @NotNull @NotEmpty @Length(min = 5, max = 100) String name,
 
-        @NotNull @NotEmpty @Length(min = 10, max = 11) String youtubeUtl) {
+        @NotNull @NotEmpty @Length(min = 10, max = 30) String youtubeUtl) {
 
 }
