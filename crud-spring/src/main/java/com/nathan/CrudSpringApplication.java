@@ -26,7 +26,6 @@ public class CrudSpringApplication {
 
 				for (int i = 1; i <= 10; i++) {
 					Course c = new Course();
-	
 					c.setName("Curso " + i);
 					c.setCategory(i % 2 == 0 ? Category.BACK_END : Category.FRONT_END);
 	
