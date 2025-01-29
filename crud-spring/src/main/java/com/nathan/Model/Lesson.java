@@ -2,7 +2,7 @@ package com.nathan.Model;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +38,7 @@ public class Lesson {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // Solution to remove cyclic reference in bidirectional relationship Course-Lesson
+    @JsonIgnore // Solution to remove cyclic reference in bidirectional relationship Course-Lesson
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
