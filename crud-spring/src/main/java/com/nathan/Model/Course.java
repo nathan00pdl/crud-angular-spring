@@ -35,7 +35,7 @@ public class Course {
     @JsonProperty("_id")
     private Long id;
 
-    @NotBlank
+    @NotBlank // Null and empty validation for string attributes
     @NotNull
     @Length(min = 5, max = 100)
     @Column(length = 100, nullable = false)
@@ -54,7 +54,7 @@ public class Course {
     @NotNull
     @NotEmpty
     @Valid
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Lesson> lessons = new ArrayList<>();
 
     public Long getId() {

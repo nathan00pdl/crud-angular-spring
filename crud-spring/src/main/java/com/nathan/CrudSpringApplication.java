@@ -24,7 +24,7 @@ public class CrudSpringApplication {
 				courseRepository.deleteAll();
 				System.out.println("Cursos deletados com sucesso.");
 
-				for (int i = 1; i <= 10; i++) {
+				for (int i = 1; i <= 5; i++) {
 					Course c = new Course();
 					c.setName("Curso " + i);
 					c.setCategory(i % 2 == 0 ? Category.BACK_END : Category.FRONT_END);
@@ -33,6 +33,7 @@ public class CrudSpringApplication {
 					l1.setName("Aula introdutória: " + i);
 					l1.setYoutubeUrl("https://youtube.com/" + i);
 					l1.setCourse(c);
+
 					c.getLessons().add(l1);
 
 					courseRepository.save(c);
@@ -40,8 +41,6 @@ public class CrudSpringApplication {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
 		};
 	}
-
 }
