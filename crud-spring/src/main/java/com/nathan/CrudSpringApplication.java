@@ -22,9 +22,9 @@ public class CrudSpringApplication {
 		return args -> {
 			try {
 				courseRepository.deleteAll();
-				System.out.println("Cursos deletados com sucesso.");
+				System.out.println("CURSOS DELETADOS COM SUCESSO!");
 
-				for (int i = 1; i <= 5; i++) {
+				for (int i = 1; i <= 10; i++) {
 					Course c = new Course();
 					c.setName("Curso " + i);
 					c.setCategory(i % 2 == 0 ? Category.BACK_END : Category.FRONT_END);
