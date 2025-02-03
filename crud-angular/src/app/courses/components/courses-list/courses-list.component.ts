@@ -1,12 +1,14 @@
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AppMaterialModule } from '../../../shared/app-material/app-material-module';
+import { MatIcon } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { CategoryPipe } from "../../../shared/pipes/category.pipe";
 import { Course } from '../../model/course';
 
 @Component({
   selector: 'app-courses-list',
   standalone: true,
-  imports: [AppMaterialModule],
+  imports: [MatTableModule, MatIcon, CategoryPipe],
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss'],
 })

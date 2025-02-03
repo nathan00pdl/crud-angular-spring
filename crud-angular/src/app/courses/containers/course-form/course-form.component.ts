@@ -1,15 +1,14 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  UntypedFormArray,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, UntypedFormArray, Validators } from '@angular/forms';
+import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
+import { MatError, MatFormField, MatHint, MatLabel } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatOption, MatSelect } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatToolbar } from '@angular/material/toolbar';
 import { ActivatedRoute } from '@angular/router';
-import { AppMaterialModule } from '../../../shared/app-material/app-material-module';
-import { FormUtilsService } from '../../../shared/form/form-utils.service';
+import { FormUtilsService } from '../../../shared/services/form-utils.service';
 import { Course } from '../../model/course';
 import { CoursesService } from '../../services/courses.service';
 import { Lesson } from './../../model/lesson';
@@ -17,7 +16,7 @@ import { Lesson } from './../../model/lesson';
 @Component({
   selector: 'app-course-form',
   standalone: true,
-  imports: [AppMaterialModule],
+  imports: [MatCard, MatCardContent, MatToolbar, MatFormField, MatHint, MatError, MatLabel, MatSelect, MatOption, MatIcon, MatCardActions, ReactiveFormsModule],
   templateUrl: './course-form.component.html',
   styleUrls: ['./course-form.component.scss'],
 })
