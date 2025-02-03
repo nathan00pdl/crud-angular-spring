@@ -1,3 +1,0 @@
-ALTER TABLE lesson
-DROP FOREIGN KEY lesson_ibfk_1,
-ADD CONSTRAINT lesson_ibfk_1 FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE;

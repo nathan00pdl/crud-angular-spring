@@ -1,7 +1,8 @@
 CREATE TABLE course (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    category VARCHAR(50) NOT NULL
+    category VARCHAR(50) NOT NULL,
+    status ENUM('ACTIVE', 'INACTIVE') NOT NULL DEFAULT 'ACTIVE'
 );
 
 CREATE TABLE lesson (
@@ -9,5 +10,5 @@ CREATE TABLE lesson (
     name VARCHAR(100) NOT NULL,
     youtube_url VARCHAR(30) NOT NULL,
     course_id BIGINT NOT NULL,
-    FOREIGN KEY (course_id) REFERENCES course(id)
+    CONSTRAINT fk_CourLess FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE
 );
