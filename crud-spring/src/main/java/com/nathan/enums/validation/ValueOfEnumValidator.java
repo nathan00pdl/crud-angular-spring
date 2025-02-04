@@ -18,7 +18,7 @@ public class ValueOfEnumValidator implements ConstraintValidator<ValueOfEnum, Ch
     }
 
     @Override
-    public boolean isValid(CharSequence value, ConstraintValidatorContext context) {
+    public boolean isValid(CharSequence value, ConstraintValidatorContext context) { // "context" is only declared to follow the method signature provided by the interface
         if (value == null) {
             return true;
         }
