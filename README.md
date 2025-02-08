@@ -9,3 +9,5 @@ This project was distributed under **MIT** license.
 # About the Project
 
 This project was carried out in conjunction with the course provided by **Loiane Groner**, accessible at https://www.youtube.com/watch?v=qJnjz8FIs6Q&list=PLGxZ4Rq3BOBpwaVgAPxTxhdX_TfSVlTcY.
+
+It is a simple **CRUD** involving a relationship between **courses** and **lessons**, which its implementation was done mainly with the **Angular** and **SpringBoot** frameworks.
