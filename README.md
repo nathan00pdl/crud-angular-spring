@@ -16,14 +16,16 @@ This was my second complete implementation of a **REST API**, containing much mo
 
 I belive that this project gave me great contact with a **REST API** that could be used in production, acording to **Loiane**, therefore being a great source of knowledge and **learning practice**. 
 
+## Project Structure
+
 ## Tecnologies
 
-- Java 21
-- Spring Boot 3 (Spring 6)
+- Java 17
+- Spring Boot 3.4.2
 - Maven
 - JPA + Hibernate
-- MySQL
-- JUnit 5 + Mockito (back-end tests)
-- Angular v18
+- Docker build
+- MySQL 8.0 image 
+- Angular v19
 - Angular Material
-- Karma + Jasmine (front-end tests)
+
