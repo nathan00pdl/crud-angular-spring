@@ -12,7 +12,7 @@ This project was carried out in conjunction with the course provided by **Loiane
 
 It is a simple **CRUD** involving a relationship between **courses** and **lessons**, which its implementation was done mainly with the **Angular** and **SpringBoot** frameworks.
 
-This was my second complete implementation of a **REST API**, containing much more details and structuring features compared to my first **API** project - **https://github.com/nathan00pdl/api-test**.
+This was my second complete implementation of a **REST API**, containing much more details and structuring features compared to my first **API** project - **https://github.com/nathan00pdl/api-test**. Furthermore, it was my first frontend contact with the **Angular** framework.
 
 I belive that this project gave me great contact with a **REST API** that could be used in production, acording to **Loiane**, therefore being a great source of knowledge and **learning practice**. 
 
@@ -20,7 +20,7 @@ I belive that this project gave me great contact with a **REST API** that could 
 - **Layered architecture - MVC**
 - Design pattern: **DTO** (Data Transfer Object)
 
-## REST API
+## REST API concepts
 - Use of **HTTP** methods, such as **GET, POST, PUT** and **DELETE** to perform operations on resources.
 - Use of **URLs** (Uniform Resource Locators) to identify especific resources.
 - Data transfer between client and server in a standard **JSON** format.
