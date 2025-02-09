@@ -27,12 +27,13 @@ I belive that this project gave me great contact with a **REST API** that could 
 - Maintaining the state of application on the client, without storing it on the server.
 
 ## Tecnologies
-- Java 17
-- Spring Boot 3.4.2
-- Maven
-- JPA + Hibernate
-- Docker build
-- MySQL 8.0 image 
-- Angular v19
-- Angular Material
+- **Java 17**
+- **Spring Boot 3.4.2**
+- **Maven**
+- **JPA** + **Hibernate**
+- **Docker build**
+- **MySQL 8.0 image**
+- **Migrations - Flyway**
+- **Angular v19**
+- **Angular Material**
 
