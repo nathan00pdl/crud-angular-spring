@@ -20,7 +20,7 @@ I belive that this project gave me great contact with a **REST API** that could 
 - **Layered architecture - MVC**
 - Design pattern: **DTO** (Data Transfer Object)
 
-## REST API concepts
+## Applied concepts of REST API 
 - Use of **HTTP** methods, such as **GET, POST, PUT** and **DELETE** to perform operations on resources.
 - Use of **URLs** (Uniform Resource Locators) to identify especific resources.
 - Data transfer between client and server in a standard **JSON** format.
