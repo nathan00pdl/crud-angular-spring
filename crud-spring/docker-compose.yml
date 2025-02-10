@@ -1,17 +1,26 @@
 services:
   mysql:
-    image: 'mysql:8.0'
+    image: mysql:8.0
     container_name: crud_spring_mysql
     environment:
       MYSQL_DATABASE: courses
       MYSQL_USER: myuser
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: verysecret
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
     ports:
       - '3306:3306'
     volumes:
       - mysql_data_vol:/var/lib/mysql
     restart: always
+    secrets:
+      - db_password
+      - db_root_password
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  db_root_password:
+    file: ./secrets/db_root_password.txt
 
 volumes:
-  mysql_data_vol: {}
+  mysql_data_vol: 
