@@ -1,4 +1,22 @@
 services:
+  backend:
+    build: .
+    image: spring-api
+    container_name: crud_spring_api
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://crud_spring_mysql:3306/courses
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_FLYWAY_ENABLED: true
+    entrypoint: ["/bin/sh", "-c", "SPRING_DATASOURCE_PASSWORD=$(cat /run/secrets/db_password) exec java -jar /app/app.jar"]
+    depends_on:
+      - mysql
+    ports:
+      - '8080:8080'
+    secrets:
+      - db_password
+    restart: always
+
   mysql:
     image: mysql:8.0
     container_name: crud_spring_mysql
@@ -11,10 +29,10 @@ services:
       - '3306:3306'
     volumes:
       - mysql_data_vol:/var/lib/mysql
-    restart: always
     secrets:
       - db_password
       - db_root_password
+    restart: always
 
 secrets:
   db_password:
