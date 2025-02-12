@@ -88,7 +88,7 @@
 				<configuration>
 					<url>jdbc:mysql://crud_spring_mysql:3306/courses</url>
 					<user>myuser</user>
-					<password>secret</password>
+					<password>${SPRING_DATASOURCE_PASSWORD}</password>
 					<driver>com.mysql.cj.jdbc.Driver</driver>  
 				</configuration>
 			</plugin>
