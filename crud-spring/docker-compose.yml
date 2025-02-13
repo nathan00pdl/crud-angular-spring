@@ -8,11 +8,13 @@ services:
       SPRING_DATASOURCE_USERNAME: myuser
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_FLYWAY_ENABLED: true
-    entrypoint: ["/bin/sh", "-c", "SPRING_DATASOURCE_PASSWORD=$(cat /run/secrets/db_password) exec java -jar /app/app.jar"]
+    entrypoint: ["/bin/sh", "-c", "export SPRING_DATASOURCE_PASSWORD=$(cat /run/secrets/db_password) && exec java -jar /app/crud-spring-0.0.1-SNAPSHOT.jar"]
     depends_on:
       - mysql
     ports:
       - '8080:8080'
+    volumes:
+      - ./target:/app
     secrets:
       - db_password
     restart: always
