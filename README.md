@@ -1,5 +1,7 @@
 # REST API with frameworks: **SpringBoot** + **Angular** 
 
+#### **Note: This readme is being written throughout the development of the project!**
+
 ### License
 
 This project was distributed under the **MIT** license. 
@@ -37,3 +39,11 @@ I belive that this project gave me great contact with a **REST API** that could 
 - **Angular v19**
 - **Angular Material**
 
+## Main Knowledge Developed
+- Greater mastery of **Layered Architecture - mvc**
+- DTO design pattern implemented with **Records** in **java**
+- **Mappers** declaration for mapping **DTOs*** and **Entities**
+- **SOLID OCP*** principle with **Dependency Injection** via constructor
+- **Data Persistence** in java with **JPA** and **Hibernate** implementation
+- **Database Versioning** with **Migrations - Flyway**
+- Application **Containerization** with **Docker Compose** + creating **Images** with **DockerFile**
