@@ -3,20 +3,20 @@ services:
     build: .
     image: spring-api
     container_name: crud_spring_api
+    env_file:
+      - ./assets/.env
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://crud_spring_mysql:3306/courses
       SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_FLYWAY_ENABLED: true
-    entrypoint: ["/bin/sh", "-c", "export SPRING_DATASOURCE_PASSWORD=$(cat /run/secrets/db_password) && exec java -jar /app/crud-spring-0.0.1-SNAPSHOT.jar"]
     depends_on:
       - mysql
     ports:
       - '8080:8080'
     volumes:
       - ./target:/app
-    secrets:
-      - db_password
     restart: always
 
   mysql:
@@ -34,13 +34,12 @@ services:
     secrets:
       - db_password
       - db_root_password
-    restart: always
 
 secrets:
   db_password:
-    file: secrets/db_password.txt
+    file: ./secrets/db_password.txt
   db_root_password:
-    file: secrets/db_root_password.txt
+    file: ./secrets/db_root_password.txt
 
 volumes:
-  mysql_data_vol: 
+  mysql_data_vol: {}
