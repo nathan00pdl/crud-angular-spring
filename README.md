@@ -47,3 +47,4 @@ I belive that this project gave me great contact with a **REST API** that could 
 - **Data Persistence** in java with **JPA** and **Hibernate** implementation
 - **Database Versioning** with **Migrations - Flyway**
 - Application **Containerization** with **Docker Compose** + creating **Images** with **DockerFile**
+- Use of **Docker Compose** via dependency injected into the **Spring Boot** framework - Docker Compose Support 
