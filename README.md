@@ -39,7 +39,7 @@ I belive that this project gave me great contact with a **REST API** that could 
 - **Angular v19**
 - **Angular Material**
 
-## Main Knowledge Developed
+## Main Knowledge Applied and Developed
 - Greater mastery of **Layered Architecture - mvc**
 - DTO design pattern implemented with **Records** in **java**
 - **Mappers** declaration for mapping **DTOs*** and **Entities**
