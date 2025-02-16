@@ -41,7 +41,7 @@ I belive that this project gave me great contact with a **REST API** that could 
 
 ## Main Knowledge Applied and Developed
 - Greater mastery of **Layered Architecture - mvc**
-- DTO design pattern implemented with **Records** in **java**
+- **DTO** design pattern implemented with **Records** in **java**
 - **Mappers** declaration for mapping **DTOs*** and **Entities**
 - **SOLID OCP*** principle with **Dependency Injection** via constructor
 - **Data Persistence** in java with **JPA** and **Hibernate** implementation
