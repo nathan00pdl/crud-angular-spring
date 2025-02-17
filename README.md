@@ -1,12 +1,13 @@
 # REST API with frameworks: **SpringBoot** + **Angular** 
 
-#### **Note: This readme is being written throughout the development of the project!**
 
 ### License
 
 This project was distributed under the **MIT** license. 
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/nathan00pdl/crud-angular-spring/blob/main/LICENSE) 
+
+> Note: **This readme is being written throughout the development of the project!**
 
 # About the Project
 
