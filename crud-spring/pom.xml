@@ -91,17 +91,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.flywaydb</groupId>
-				<artifactId>flyway-maven-plugin</artifactId>
-				<version>11.3.0</version> 
-				<configuration>
-					<url>jdbc:mysql://crud_spring_mysql:3306/courses</url>
-					<user>myuser</user>
-					<password>${SPRING_DATASOURCE_PASSWORD}</password>
-					<driver>com.mysql.cj.jdbc.Driver</driver>  
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 </project>
