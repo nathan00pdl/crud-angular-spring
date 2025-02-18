@@ -32,6 +32,11 @@ build/
 ### VS Code ###
 .vscode/
 
-### Docker ###
+### Docker Secrets ###
 secrets/
+
+### Environment Variable  ###
 .env
+
+### Notes ###
+anotacoes.txt
