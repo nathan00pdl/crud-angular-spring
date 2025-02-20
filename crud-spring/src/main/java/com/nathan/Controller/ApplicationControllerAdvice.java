@@ -11,7 +11,11 @@ import com.nathan.Exception.RecordNotFoundException;
 
 import jakarta.validation.ConstraintViolationException;
 
-//Responsabilidade da classe: Capturar e recomendar o que fazer com exceções lançadas por qualquer controller da aplicação
+/*
+ * Class Responsabilities:
+ * 
+ * Catch and recommend what to do with exceptions thrown by any application controller.
+ */
 
 @RestControllerAdvice
 public class ApplicationControllerAdvice {
