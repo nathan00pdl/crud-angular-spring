@@ -14,12 +14,12 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 /*
- * Record type
+ * Record type:
  * 
- * It is as special type of class that automaticaly manages the getters, equals(), hashCode() e toString()
- * They are designed precisely to represent immutable and simple objects like DTOs
- * Significant redution of lines of code  making the code clearer and cleaner
- * Each field in the record is automaticaly transformed into a private final attribute
+ * It is as special type of class that automaticaly manages the getters, equals(), hashCode() e toString().
+ * They are designed precisely to represent immutable and simple objects like DTOs.
+ * Significant redution of lines of code  making the code clearer and cleaner.
+ * Each field in the record is automaticaly transformed into a private final attribute.
  */
 
 public record CourseDTO(

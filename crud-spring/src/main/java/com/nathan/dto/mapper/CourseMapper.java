@@ -12,12 +12,12 @@ import com.nathan.dto.LessonDTO;
 import com.nathan.enums.Category;
 
 /*
- * Using a Mapper
+ * Using a Mapper:
  * 
- * Responsible for mapping entities with their respective DTOs
- * Maintains decoupling between application layers
- * Ensures the only relevant data is sent to the fron-end or recieved from the client application
- * Standard: Separation of Concerns
+ * Responsible for mapping entities with their respective DTOs.
+ * Maintains decoupling between application layers.
+ * Ensures the only relevant data is sent to the fron-end or recieved from the client application.
+ * Standard: Separation of Concerns.
  */
 
 @Component

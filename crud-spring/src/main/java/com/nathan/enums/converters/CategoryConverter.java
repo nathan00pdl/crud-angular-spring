@@ -9,10 +9,10 @@ import jakarta.persistence.Converter;
 
 /*
  * AtributeConverter interface:  
- * 1) Save ENUM to database as a string 
- * 2) Retrieve such string and convert to corresponding ENUM 
+ * 1) Save ENUM to database as a string. 
+ * 2) Retrieve such string and convert to corresponding ENUM. 
  * 
- * By default JPA saves ENUMs as int type values and this can cause problems
+ * By default JPA saves ENUMs as int type values and this can cause problems.
  */
 
 @Converter(autoApply = true) 

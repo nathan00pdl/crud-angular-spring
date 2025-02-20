@@ -24,10 +24,12 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
 /*
+ * Annotations:
+ *
  * Using method signatures privided by the JpaRepository interface (without explicit declaration in CourseRepository)
- * is possible due to the Aspect Oriented Programming paradigm
+ * is possible due to the Aspect Oriented Programming paradigm.
  * 
- * findAll() e findById() are methods automatically generated at runtime by Spring Data JPA
+ * findAll() e findById() are methods automatically generated at runtime by Spring Data JPA.
  */
 
 @Validated

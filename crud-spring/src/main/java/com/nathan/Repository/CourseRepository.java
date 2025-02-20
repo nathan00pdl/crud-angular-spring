@@ -12,7 +12,7 @@ import com.nathan.enums.Status;
 
 /*
  * These methods are explicity declared as they are defined with custom parameters and return types compared to  
- * the same signatures provided by the JpaRepository interface
+ * the same signatures provided by the JpaRepository interface.
  */
 
 @Repository
