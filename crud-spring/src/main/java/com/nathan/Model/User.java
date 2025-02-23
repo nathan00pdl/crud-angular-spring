@@ -10,12 +10,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.nathan.enums.UserRole;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 
 @Entity(name = "users")
 @Table(name = "users")
 public class User implements UserDetails{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String login;
     private String password;
