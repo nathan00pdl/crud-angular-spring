@@ -23,17 +23,17 @@ public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+
     private String login;
     private String password;
-    private UserRole userRole;
     
     private UserRole role;
 
-    public User(String id, String login, String password, UserRole userRole) {
+    public User(String id, String login, String password, UserRole role) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.userRole = userRole;
+        this.role = role;
     }
 
     public User(String login, String password, UserRole role) { // Constructor created for the register method in AuthenticationController
@@ -49,14 +49,32 @@ public class User implements UserDetails{
     }
 
     @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
     public String getUsername() {
         return login;
     }
 
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
