@@ -42,7 +42,7 @@ public class User implements UserDetails{
 
     @Override
     public String getPassword() {
-        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+        return null;
     }
 
     @Override
