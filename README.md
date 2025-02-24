@@ -36,7 +36,8 @@ I belive that this project gave me great contact with a **REST API** that could 
 - **Spring Boot 3.4.2**
 - **Maven**
 - **JPA** + **Hibernate**
-- **Docker build**
+- **Docker**
+- **Docker Compose**
 - **MySQL 8.0 image**
 - **Migrations - Flyway**
 - **Angular v19**
