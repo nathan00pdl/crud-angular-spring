@@ -22,8 +22,8 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                                                        .requestMatchers(HttpMethod.POST, "/api/courses").hasRole("ADMIN")
-                                                        .anyRequest().authenticated())
+                                        .requestMatchers(HttpMethod.POST, "/api/courses").hasRole("ADMIN")
+                                        .anyRequest().authenticated())
                 .build();
     }
 

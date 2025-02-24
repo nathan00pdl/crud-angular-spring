@@ -25,13 +25,21 @@ public class User implements UserDetails{
     private String id;
     private String login;
     private String password;
+    private UserRole userRole;
     
     private UserRole role;
 
-    public User(String id, String login, String password) {
+    public User(String id, String login, String password, UserRole userRole) {
         this.id = id;
         this.login = login;
         this.password = password;
+        this.userRole = userRole;
+    }
+
+    public User(String login, String password, UserRole role) { // Constructor created for the register method in AuthenticationController
+        this.login = login;
+        this.password = password;
+        this.role = role;
     }
 
     @Override
