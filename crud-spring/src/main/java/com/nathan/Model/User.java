@@ -22,14 +22,14 @@ public class User implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     private String login;
     private String password;
     
     private UserRole role;
 
-    public User(String id, String login, String password, UserRole role) {
+    public User(Long id, String login, String password, UserRole role) {
         this.id = id;
         this.login = login;
         this.password = password;
