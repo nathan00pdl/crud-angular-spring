@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("auth")
 public class AuthenticationController {
     private UserRepository userRepository;
-
     private AuthenticationManager authenticationManager;
 
     public AuthenticationController(AuthenticationManager authenticationManager, UserRepository userRepository) {
@@ -30,7 +29,7 @@ public class AuthenticationController {
     }
     
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
+    public ResponseEntity<Void> login(@RequestBody @Valid AuthenticationDTO data) {
         var userNamePasswordToken = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(userNamePasswordToken);
 
@@ -38,7 +37,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity resgister(@RequestBody @Valid RegisterDTO data) {
+    public ResponseEntity<Void> resgister(@RequestBody @Valid RegisterDTO data) {
         if (this.userRepository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());

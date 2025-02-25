@@ -27,7 +27,7 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - ./target:/app
+      - ./target/app.jar:/app/app.jar
     env_file:
       - ./.env
     environment:
