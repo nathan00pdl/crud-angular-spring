@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.nathan.Model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, Long> {
     UserDetails findByLogin(String login);
 }
