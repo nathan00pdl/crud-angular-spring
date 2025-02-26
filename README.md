@@ -33,7 +33,7 @@ I belive that this project gave me great contact with a **REST API** that could 
 
 ## Tecnologies
 - **Java 17**
-- **Spring Boot 3.4.2**
+- **Spring Boot 3.4.3**
 - **Maven**
 - **JPA** + **Hibernate**
 - **Docker**
