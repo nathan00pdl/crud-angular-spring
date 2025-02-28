@@ -17,8 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class SecurityFilter extends OncePerRequestFilter{
-
+public class SecurityFilter extends OncePerRequestFilter {
     private TokenService tokenService;
     private UserRepository userRepository;
 
@@ -30,20 +29,22 @@ public class SecurityFilter extends OncePerRequestFilter{
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var token = this.recoverToken(request); 
+        var login = tokenService.validateToken(token); // Note: validateToken returns the user login associated with the generated token
 
         if (token != null) {
-            var login = tokenService.validateToke(token);
-            UserDetails userDetails = userRepository.findByLogin(login);
-            
+            UserDetails userDetails = userRepository.findByLogin(login);    
             var authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+        
         filterChain.doFilter(request, response);
     }
 
+    // Method responsible for extracting the JWT token from the HTTP request header
     private String recoverToken(HttpServletRequest request) {
-        var authHeader = request.getHeader("authorization");
+        var authHeader = request.getHeader("Authorization");
         if (authHeader == null) return null;
-        return authHeader.replace("Bearer ", "");
+        return authHeader.replace("Bearer ", "");  
     }
 }

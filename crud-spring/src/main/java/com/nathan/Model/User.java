@@ -39,35 +39,34 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    public User(String login, String password, UserRole role) { // Constructor created for the register method in
-                                                                // AuthenticationController
+    public User(String login, String password, UserRole role) { // Constructor created for the register method in AuthenticationController
         this.login = login;
         this.password = password;
         this.role = role;
     }
 
+    public Long getId() {
+        return id;
+    }
+    
+    public String getLogin() {
+        return login;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+    
+    public UserRole getRole() {
+        return role;
+    }
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.role == UserRole.ADMIN)
             return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
         else
             return List.of(new SimpleGrantedAuthority("ROLE_USER"));
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public UserRole getRole() {
-        return role;
     }
 
     @Override

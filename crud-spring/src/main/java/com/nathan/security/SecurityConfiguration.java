@@ -22,11 +22,13 @@ public class SecurityConfiguration {
         this.securityFilter = securityFilter;
     }
 
+    // Note: RESTful API is stateless because the server does not need to know the client's state to process the request.
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) 
                 .authorizeHttpRequests(authorize -> authorize
                                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
