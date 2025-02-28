@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nathan.Model.User;
 import com.nathan.Repository.UserRepository;
 import com.nathan.Service.TokenService;
-import com.nathan.dto.AuthenticationDTO;
+import com.nathan.dto.LoginRequestDTO;
 import com.nathan.dto.LoginResponseDTO;
 import com.nathan.dto.RegisterDTO;
 
@@ -32,7 +32,7 @@ public class AuthenticationController {
     }
     
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationDTO data) {
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginRequestDTO data) {
         var userNamePasswordToken = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(userNamePasswordToken);
         var token = tokenService.generateToken((User) auth.getPrincipal());
