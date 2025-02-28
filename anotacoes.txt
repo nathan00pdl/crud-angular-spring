@@ -363,3 +363,82 @@ networks:
     driver: bridge
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DUAS OPÇÕES DE SERVIÇO BACKEND - docker-compose.yml / Dockerfile
+
+PROBLEMA -> atualizacao/persistencia dos arquivos compilados (.jar)
+
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
+ENTRYPOINT ["java", "-jar", "/app/crud-spring-0.0.1-SNAPSHOT.jar"]
+
+
+  backend:
+    build: .
+    image: spring-api
+    restart: always
+    container_name: backend
+    depends_on:
+      - db
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./target:/app
+    env_file:
+      - ./.env
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/courses
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_FLYWAY_ENABLED: true
+    networks:
+      - spring-mysql
+
+----------------------------------------------------------------------------
+
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+
+      
+backend:
+  build: .
+  image: spring-api
+  restart: always
+  container_name: backend
+  depends_on:
+    - db
+  ports:
+    - "8080:8080"
+  volumes:
+    - ./target/crud-spring-0.0.1-SNAPSHOT.jar:/app/app.jar
+  env_file:
+    - ./.env
+  environment:
+    SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/courses
+    SPRING_DATASOURCE_USERNAME: ${DB_USER}
+    SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+    SPRING_FLYWAY_ENABLED: true
+  networks:
+    - spring-mysql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
