@@ -29,8 +29,7 @@ public class User implements UserDetails {
 
     private UserRole role;
 
-    public User() {
-    }
+    public User() {}
 
     public User(Long id, String login, String password, UserRole role) {
         this.id = id;
@@ -39,7 +38,8 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    public User(String login, String password, UserRole role) { // Constructor created for the register method in AuthenticationController
+    // Constructor created for the register method in AuthenticationController 
+    public User(String login, String password, UserRole role) { 
         this.login = login;
         this.password = password;
         this.role = role;
@@ -69,7 +69,7 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.role == UserRole.ADMIN)
-            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER")); // Roles defined by SpringBoot itself
         else
             return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }

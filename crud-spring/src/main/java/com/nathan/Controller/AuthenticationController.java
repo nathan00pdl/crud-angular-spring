@@ -21,10 +21,10 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("auth")
 public class AuthenticationController {
-    private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
     private TokenService tokenService;
-
+    private AuthenticationManager authenticationManager;
+    
     public AuthenticationController(AuthenticationManager authenticationManager, UserRepository userRepository, TokenService tokenService) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
@@ -33,15 +33,15 @@ public class AuthenticationController {
     
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginRequestDTO data) {
-        var userNamePasswordToken = new UsernamePasswordAuthenticationToken(data.login(), data.password());
-        var auth = this.authenticationManager.authenticate(userNamePasswordToken);
+        var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
+        var auth = this.authenticationManager.authenticate(usernamePassword); // Authomatic call to `UserDetailsService` interface - `AuthenticationServic` class
         var token = tokenService.generateToken((User) auth.getPrincipal());
 
         return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Void> resgister(@RequestBody @Valid RegisterDTO data) {
+    public ResponseEntity<Void> register(@RequestBody @Valid RegisterDTO data) {
         if (this.userRepository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
