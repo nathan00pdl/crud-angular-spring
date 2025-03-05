@@ -52,7 +52,7 @@ public class CourseMapper {
             var lesson = new Lesson();
             lesson.setId(lessonsDTO.id());
             lesson.setName(lessonsDTO.name());
-            lesson.setYoutubeUrl(lessonsDTO.youtubeUtl());
+            lesson.setYoutubeUrl(lessonsDTO.youtubeUrl());
             lesson.setCourse(course);
             return lesson;
         }).collect(Collectors.toList());
