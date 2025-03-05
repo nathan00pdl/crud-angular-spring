@@ -24,7 +24,7 @@ import jakarta.validation.Payload;
 public @interface ValueOfEnum {
     Class<? extends Enum<?>> enumClass();
 
-    String message() default "must be any of enum {enumClass}";
+    String message() default "must be any of enum - {enumClass}";
 
     Class<?>[] groups() default {};
 
