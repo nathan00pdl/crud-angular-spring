@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 
  * This class is a custom filter and aims to validate the JWT token sent by the client in the HTTP request and setting authentication in the `SecurityContextHolder`.
  * The @Component annotation has the function of signaling to SpringBoot that it will be responsible for managing the filter lifecycle.
- * `UsernamePasswordAuthenticationToken` is an internal filer defined by Spring Security.
+ * `UsernamePasswordAuthenticationToken` is an internal filter defined by Spring Security.
  */
 
 @Component

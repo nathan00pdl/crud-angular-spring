@@ -7,6 +7,12 @@ import java.util.stream.Stream;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+/*
+ * Note:
+ * 
+ * This class implements the validation logic for the @ValueOfEnum annotation. 
+ */
+
 public class ValueOfEnumValidator implements ConstraintValidator<ValueOfEnum, CharSequence> {
     private List<String> acceptedValues;
 
