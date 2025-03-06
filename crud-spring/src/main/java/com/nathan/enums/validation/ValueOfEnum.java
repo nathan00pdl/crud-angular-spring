@@ -15,7 +15,7 @@ import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 /*
- * Defining a custom annotation to ensure that a field has a valid value from a specifc ENUM.
+ * Defining a custom annotation to ensure that a field has a valid value from a specific ENUM.
  */
 
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE }) // Places where this annotation can be used
