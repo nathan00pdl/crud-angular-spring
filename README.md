@@ -8,7 +8,7 @@ This project is licensed under **MIT** license. See the `LICENSE` file for more 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/nathan00pdl/crud-angular-spring/blob/main/LICENSE) 
 
 
-> Note: **This readme is being written throughout the development of the project!**
+> Note: *This readme is being written throughout the development of the project!*
 
 
 # About the Project
@@ -20,6 +20,10 @@ It is a simple **CRUD** involving a relationship between **courses** and **lesso
 This was my second complete implementation of a **REST API**, containing much more details and structuring features compared to my first **API** project - **https://github.com/nathan00pdl/api-test**. Furthermore, it was my first frontend contact with the **Angular** framework.
 
 I belive that this project gave me great contact with a **REST API** that could be used in production, acording to **Loiane**, therefore being a great source of knowledge and **learning practice**. 
+
+
+> Note: *The project as a whole has several redundant comments, as I challenged myself to implement some technologies that I had never had contact with, therefore it is a real project for study and practice purposes.*
+
 
 ## Backend Structure
 - **Layered architecture - MVC**
