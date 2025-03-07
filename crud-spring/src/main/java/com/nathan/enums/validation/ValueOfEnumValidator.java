@@ -19,14 +19,13 @@ public class ValueOfEnumValidator implements ConstraintValidator<ValueOfEnum, Ch
     @Override
     public void initialize(ValueOfEnum annotation) {
         acceptedValues = Stream.of(annotation.enumClass().getEnumConstants())
-        .map(Enum::toString)
-        .collect(Collectors.toList());
+            .flatMap(enumConstant -> Stream.of(enumConstant.name(), ((com.nathan.enums.Category) enumConstant).getValue()))
+            .map(String::toLowerCase)
+            .collect(Collectors.toList());
     }
 
     @Override
     public boolean isValid(CharSequence value, ConstraintValidatorContext context) { // "context" is only declared to follow the method signature provided by the interface
-        if (value == null) {
-            return true;
-        }
-        return acceptedValues.contains(value.toString());
-    }}
+        return value == null || acceptedValues.contains(value.toString().toLowerCase());
+    }
+}

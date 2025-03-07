@@ -26,7 +26,7 @@ public class CrudSpringApplication {
 
 				Course c1 = new Course();
 				c1.setName("Java COMPLETO + Orientação a Objetos");
-				c1.setCategory(Category.BACK_END);
+				c1.setCategory(Category.BACKEND);
 
 				Lesson lesson1_c1 = new Lesson();
 				lesson1_c1.setName("Introdução a linguagem JAVA");
@@ -44,7 +44,7 @@ public class CrudSpringApplication {
 
 				Course c2 = new Course();
 				c2.setName("Angular framework");
-				c2.setCategory(Category.FRONT_END);
+				c2.setCategory(Category.FRONTEND);
 
 				Lesson lesson1_c2 = new Lesson();
 				lesson1_c2.setName("Estrutura de diretórios com Angular");

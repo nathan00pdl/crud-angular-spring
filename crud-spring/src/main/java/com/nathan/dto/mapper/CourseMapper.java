@@ -1,5 +1,6 @@
 package com.nathan.dto.mapper;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,13 +63,11 @@ public class CourseMapper {
     }
 
     public Category convertCategoryValue(String value) {  
-        if (value == null) {
-            return null;
-        }
-        return switch (value) {
-            case "Front-end" -> Category.FRONT_END;
-            case "Back-end" -> Category.BACK_END;
-            default -> throw new IllegalArgumentException("Categoria Inválida: " + value);
-        };
+        if (value == null) return null;
+        
+        return Arrays.stream(Category.values())
+            .filter(category -> category.name().equalsIgnoreCase(value) || category.getValue().equalsIgnoreCase(value))
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException("Invalid Category: " + value));
     }
 }

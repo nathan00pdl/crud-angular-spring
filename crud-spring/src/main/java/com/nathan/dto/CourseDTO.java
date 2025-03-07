@@ -1,7 +1,6 @@
 package com.nathan.dto;
 
 import java.util.List;
-import java.util.Locale.Category;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -27,7 +26,7 @@ public record CourseDTO(
 
         @NotBlank @NotNull @Length(min = 5, max = 100) String name,
 
-        @NotNull @Length(max = 10) @ValueOfEnum(enumClass = Category.class) String category,
+        @NotNull @Length(max = 10) @ValueOfEnum(enumClass = com.nathan.enums.Category.class) String category,
 
         @NotNull @NotEmpty @Valid List<LessonDTO> lessons) {
 }
