@@ -17,7 +17,7 @@ import com.nathan.enums.Category;
  * 
  * Responsible for mapping entities with their respective DTOs.
  * Maintains decoupling between application layers.
- * Ensures the only relevant data is sent to the fron-end or recieved from the client application.
+ * Ensures the only relevant data is sent to the front-end or recieved from the client application.
  * Standard: Separation of Concerns.
  */
 

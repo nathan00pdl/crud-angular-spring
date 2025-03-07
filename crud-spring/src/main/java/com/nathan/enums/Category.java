@@ -1,6 +1,14 @@
 package com.nathan.enums;
 
-// ENUM -> Defining strongly typed fixed values.
+/*
+ * Notes:
+ * 
+ * ENUM -> Defining strongly typed fixed values.
+ * 
+ * Category.BACKEND.name() returns "BACKEND"
+ * Category.BACKEND.getValue() returns "Back-end"
+ * Category.BACKEND.toString() also returns "Back-end"
+ */
 
 public enum Category {
     BACKEND("Back-end"), 
