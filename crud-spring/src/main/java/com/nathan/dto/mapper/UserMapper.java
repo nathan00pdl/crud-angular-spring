@@ -1,9 +1,12 @@
 package com.nathan.dto.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.nathan.Model.User;
 import com.nathan.dto.UserDTO;
 import com.nathan.enums.UserRole;
 
+@Component
 public class UserMapper {
     public UserDTO toDTO(User user) {
         if (user == null) return null;
