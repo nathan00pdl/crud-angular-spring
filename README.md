@@ -14,7 +14,7 @@ Built while following [Loiane Groner's course](https://www.youtube.com/watch?v=q
 
 ## Architecture
 
-<a href="docs/architecture.svg"><img src="docs/architecture.svg" alt="The Angular app calls /api through the dev-server proxy; in the Spring Boot backend a security filter validates the JWT before the controllers, services and JPA repositories reach MySQL, whose schema Flyway manages." width="658"></a>
+<p align="center"><a href="docs/architecture.svg"><img src="docs/architecture.svg" alt="The Angular app calls /api through the dev-server proxy; in the Spring Boot backend a security filter validates the JWT before the controllers, services and JPA repositories reach MySQL, whose schema Flyway manages." width="658"></a></p>
 
 | Folder | What it is |
 |---|---|
