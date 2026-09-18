@@ -1,0 +1,25 @@
+flowchart LR
+    subgraph FE["crud-angular · Angular 19"]
+        UI["Courses list<br/>and course form"] --> SVC["CoursesService<br/>HttpClient"]
+    end
+    SVC -- "/api/** via proxy.conf.js" --> SF
+    subgraph BE["crud-spring · Spring Boot 3.4"]
+        SF["SecurityFilter<br/>validates the JWT"] --> CTRL["Controllers"]
+        AUTH["AuthenticationController<br/>/auth/login · /auth/register"] --> TOK["TokenService<br/>issues the JWT"]
+        CTRL --> SERV["Services"] --> REPO["JPA repositories"]
+    end
+    REPO --> DB[("MySQL 8<br/>Docker Compose")]
+    FW["Flyway migrations"] -.-> DB
+
+    style UI fill:#4F81BD,stroke:#385D8A,color:#FFFFFF
+    style SVC fill:#4F81BD,stroke:#385D8A,color:#FFFFFF
+    style SF fill:#4F81BD,stroke:#385D8A,color:#FFFFFF
+    style CTRL fill:#4F81BD,stroke:#385D8A,color:#FFFFFF
+    style AUTH fill:#4F81BD,stroke:#385D8A,color:#FFFFFF
+    style TOK fill:#4F81BD,stroke:#385D8A,color:#FFFFFF
+    style SERV fill:#4F81BD,stroke:#385D8A,color:#FFFFFF
+    style REPO fill:#4F81BD,stroke:#385D8A,color:#FFFFFF
+    style DB fill:#4F81BD,stroke:#385D8A,color:#FFFFFF
+    style FW fill:#E8E8E8,stroke:#333333,color:#000000
+    style FE fill:#FFFFFF,stroke:#333333,color:#000000
+    style BE fill:#FFFFFF,stroke:#333333,color:#000000
