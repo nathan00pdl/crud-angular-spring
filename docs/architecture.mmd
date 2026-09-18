@@ -1,9 +1,13 @@
+---
+config:
+  layout: elk
+---
 flowchart TB
     subgraph FE["crud-angular · Angular 19"]
         direction TB
         UI["Courses list and course form"] --> SVC["CoursesService · HttpClient"]
     end
-    SVC -- "/api/** through proxy.conf.js" --> SF
+    FE -- "/api/** through proxy.conf.js" --> BE
     subgraph BE["crud-spring · Spring Boot 3.4"]
         direction TB
         AUTH["AuthenticationController<br/>/auth/login · /auth/register"] --> TOK["TokenService · issues the JWT"]
