@@ -14,9 +14,7 @@ Built while following [Loiane Groner's course](https://www.youtube.com/watch?v=q
 
 ## Architecture
 
-<a href="docs/architecture.svg"><img src="docs/architecture.svg" alt="The Angular app calls /api through the dev-server proxy; in the Spring Boot backend a security filter validates the JWT before the controllers, services and JPA repositories reach MySQL, whose schema Flyway manages." width="620"></a>
-
-<sub>Click the diagram to open it at full size.</sub>
+<a href="docs/architecture.svg"><img src="docs/architecture.svg" alt="The Angular app calls /api through the dev-server proxy; in the Spring Boot backend a security filter validates the JWT before the controllers, services and JPA repositories reach MySQL, whose schema Flyway manages." width="658"></a>
 
 | Folder | What it is |
 |---|---|
@@ -130,7 +128,7 @@ The app opens on `http://localhost:4200`. As noted above, its course screens get
 
 ## Diagrams
 
-The diagram is generated from the Mermaid source in `docs/`, so it stays editable text rather than a binary image:
+Click a diagram to open it at full size. The diagram is generated from the Mermaid source in `docs/`, so it stays editable text rather than a binary image:
 
 ```bash
 npx @mermaid-js/mermaid-cli -i docs/architecture.mmd -o docs/architecture.svg -t default -b white -c docs/mermaid-config.json
