@@ -34,11 +34,13 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/error").permitAll()  // otherwise any 4xx/5xx reaches the client as 403
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/users").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/users").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/courses").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/courses").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/courses/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/courses/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

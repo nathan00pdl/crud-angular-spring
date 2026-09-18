@@ -2,7 +2,7 @@ services:
   db:
     image: mysql:8.0
     restart: always
-    container_name: mysql
+    container_name: mysql_crud_angular_spring
     env_file:
       - ./.env
     environment:
@@ -21,7 +21,7 @@ services:
     build: .
     image: spring-api
     restart: always
-    container_name: backend
+    container_name: backend_crud_angular_spring
     depends_on:
       - db
     ports:

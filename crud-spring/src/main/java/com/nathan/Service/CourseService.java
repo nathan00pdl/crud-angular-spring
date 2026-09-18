@@ -78,7 +78,10 @@ public class CourseService {
                     recordFound.setName(courseDTO.name());
                     recordFound.setCategory(this.courseMapper.convertCategoryValue(courseDTO.category()));
                     recordFound.getLessons().clear();
-                    course.getLessons().forEach(lesson -> recordFound.getLessons().add(lesson));
+                    course.getLessons().forEach(lesson -> {
+                        lesson.setCourse(recordFound);  // the mapper points it at a transient Course; Hibernate needs the managed one
+                        recordFound.getLessons().add(lesson);
+                    });
 
                     return courseRepository.save(recordFound);
                 })

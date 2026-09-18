@@ -15,6 +15,7 @@ import com.nathan.Service.TokenService;
 import com.nathan.dto.LoginRequestDTO;
 import com.nathan.dto.LoginResponseDTO;
 import com.nathan.dto.RegisterDTO;
+import com.nathan.enums.UserRole;
 
 import jakarta.validation.Valid;
 
@@ -45,7 +46,7 @@ public class AuthenticationController {
         if (this.userRepository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-        User newUser = new User(data.login(), encryptedPassword, data.role());
+        User newUser = new User(data.login(), encryptedPassword, UserRole.USER);  // the role never comes from the request: anyone could register as ADMIN
         
         this.userRepository.save(newUser);
 
