@@ -14,7 +14,7 @@ Built while following [Loiane Groner's course](https://www.youtube.com/watch?v=q
 
 ## Architecture
 
-<p align="center"><a href="docs/architecture.svg"><img src="docs/architecture.svg" alt="The Angular app calls /api through the dev-server proxy; in the Spring Boot backend a security filter validates the JWT before the controllers, services and JPA repositories reach MySQL, whose schema Flyway manages." width="658"></a></p>
+<p align="center"><a href="docs/architecture.svg"><img src="docs/architecture.svg" alt="The Angular app calls /api through the dev-server proxy; in the Spring Boot backend a security filter validates the JWT before the controllers, services and JPA repositories reach MySQL, whose schema Flyway manages." width="267"></a></p>
 
 | Folder | What it is |
 |---|---|
@@ -128,11 +128,16 @@ The app opens on `http://localhost:4200`. As noted above, its course screens get
 
 ## Diagrams
 
-Click a diagram to open it at full size. The diagram is generated from the Mermaid source in `docs/`, so it stays editable text rather than a binary image:
+Click a diagram to open it at full size. The diagram is generated from the Mermaid source in `docs/`, so it stays editable text rather than binary images:
 
 ```bash
-npx @mermaid-js/mermaid-cli -i docs/architecture.mmd -o docs/architecture.svg -t default -b white -c docs/mermaid-config.json
+for d in docs/*.mmd; do
+  npx @mermaid-js/mermaid-cli -i "$d" -o "${d%.mmd}.svg" -t default -b white -c docs/mermaid-config.json
+  python3 docs/finish-svg.py "${d%.mmd}.svg"
+done
 ```
+
+`finish-svg.py` adds a margin around each diagram and gives the arrow labels an opaque background, so the SVG looks the same in any viewer.
 
 ## License
 
