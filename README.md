@@ -16,11 +16,6 @@ Built while following [Loiane Groner's course](https://www.youtube.com/watch?v=q
 
 <p align="center"><a href="docs/architecture.svg"><img src="docs/architecture.svg" alt="The Angular app calls /api through the dev-server proxy; in the Spring Boot backend a security filter validates the JWT before the controllers, services and JPA repositories reach MySQL, whose schema Flyway manages." width="307"></a></p>
 
-| Folder | What it is |
-|---|---|
-| `crud-spring/` | The API: Spring Boot 3.4.3, Java 17 |
-| `crud-angular/` | The frontend: Angular 19 with Angular Material |
-
 ### Backend
 
 - **Layered:** `Controller` → `Service` → `Repository` → `Model`, with **DTOs** as Java records and **mappers** between them and the entities.
